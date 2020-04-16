@@ -6,4 +6,3 @@ easy_admin:
         - App\Entity\Video
         - App\Entity\Musique
         - App\Entity\Concert
-        - App\Entity\Mail

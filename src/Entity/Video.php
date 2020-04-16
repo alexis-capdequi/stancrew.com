@@ -42,9 +42,9 @@ class Video
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CategorieVideos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\CategorieVideos", inversedBy="videos")
      */
-    private $categorie;
+    private $categorie_videos;
 
     public function getId(): ?int
     {
@@ -119,6 +119,23 @@ class Video
     public function setCategorie(?CategorieVideos $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+    
+    public function __toString(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function getCategorieVideos(): ?CategorieVideos
+    {
+        return $this->categorie_videos;
+    }
+
+    public function setCategorieVideos(?CategorieVideos $categorie_videos): self
+    {
+        $this->categorie_videos = $categorie_videos;
 
         return $this;
     }

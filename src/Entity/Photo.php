@@ -21,15 +21,16 @@ class Photo
      */
     private $titre;
 
-    /**
+    /**    public function __toString(): ?string
+    {
+        return $this->titre;
+    }
      * @ORM\Column(type="datetime")
      */
     private $date_publication;
 
     /**
-     * @var \AlbumPhotos
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\AlbumPhotos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\AlbumPhotos", inversedBy="photos")
      */
     private $album_photos;
 
@@ -72,5 +73,10 @@ class Photo
         $this->album_photos = $album_photos;
 
         return $this;
+    }
+    
+    public function __toString(): ?string
+    {
+        return $this->titre;
     }
 }
