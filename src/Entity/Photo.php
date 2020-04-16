@@ -29,7 +29,7 @@ class Photo
     /**
      * @var \AlbumPhotos
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\AlbumPhotos", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\AlbumPhotos")
      */
     private $album_photos;
 

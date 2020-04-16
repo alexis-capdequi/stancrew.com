@@ -28,11 +28,6 @@ class AlbumPhotos
      */
     private $date_publication;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="album_photos")
-     */
-    private $photos;
-
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -63,37 +58,6 @@ class AlbumPhotos
     public function setDatePublication(\DateTimeInterface $date_publication): self
     {
         $this->date_publication = $date_publication;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Photo[]
-     */
-    public function getPhotos(): Collection
-    {
-        return $this->photos;
-    }
-
-    public function addPhoto(Photo $photo): self
-    {
-        if (!$this->photos->contains($photo)) {
-            $this->photos[] = $photo;
-            $photo->setAlbumPhotos($this);
-        }
-
-        return $this;
-    }
-
-    public function removePhoto(Photo $photo): self
-    {
-        if ($this->photos->contains($photo)) {
-            $this->photos->removeElement($photo);
-            // set the owning side to null (unless already changed)
-            if ($photo->getAlbumPhotos() === $this) {
-                $photo->setAlbumPhotos(null);
-            }
-        }
 
         return $this;
     }

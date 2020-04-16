@@ -37,14 +37,14 @@ class Video
     private $date_publication;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $categorie;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CategorieVideos")
+     */
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -99,18 +99,6 @@ class Video
         return $this;
     }
 
-    public function getCategorie(): ?string
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(?string $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -119,6 +107,18 @@ class Video
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?CategorieVideos
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?CategorieVideos $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
