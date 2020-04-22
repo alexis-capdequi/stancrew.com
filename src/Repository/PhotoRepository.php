@@ -19,32 +19,14 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-    // /**
-    //  * @return Photo[] Returns an array of Photo objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByAlbum($code_album): ?Photo
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Photo
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.album_photos = :code_album')
+            ->orderBy('p.date_publication', 'DESC')
+            ->setParameter('code_album', $code_album)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }
