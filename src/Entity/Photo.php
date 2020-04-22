@@ -19,7 +19,7 @@ class Photo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    private $code;
 
     /**    public function __toString(): ?string
     {
@@ -39,14 +39,14 @@ class Photo
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getCode(): ?string
     {
-        return $this->titre;
+        return $this->code;
     }
 
-    public function setTitre(string $titre): self
+    public function setCode(string $code): self
     {
-        $this->titre = $titre;
+        $this->code = $code;
 
         return $this;
     }
