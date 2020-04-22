@@ -42,7 +42,7 @@ class Video
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CategorieVideos", inversedBy="videos")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $categorie_videos;
 
@@ -127,13 +127,13 @@ class Video
     {
         return $this->titre;
     }
-
-    public function getCategorieVideos(): ?CategorieVideos
+    
+    public function getCategorieVideos(): ?string
     {
         return $this->categorie_videos;
     }
 
-    public function setCategorieVideos(?CategorieVideos $categorie_videos): self
+    public function setCategorieVideos(?string $categorie_videos): self
     {
         $this->categorie_videos = $categorie_videos;
 
