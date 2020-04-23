@@ -21,18 +21,15 @@ class Photo
      */
     private $code;
 
-    /**    public function __toString(): ?string
-    {
-        return $this->titre;
-    }
+    /**
      * @ORM\Column(type="datetime")
      */
     private $date_publication;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\AlbumPhotos", inversedBy="photos")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $album_photos;
+    private $commentaire;
 
     public function getId(): ?int
     {
@@ -63,20 +60,15 @@ class Photo
         return $this;
     }
 
-    public function getAlbumPhotos(): ?AlbumPhotos
+    public function getCommentaire(): ?string
     {
-        return $this->album_photos;
+        return $this->commentaire;
     }
 
-    public function setAlbumPhotos(?AlbumPhotos $album_photos): self
+    public function setCommentaire(?string $commentaire): self
     {
-        $this->album_photos = $album_photos;
+        $this->commentaire = $commentaire;
 
         return $this;
-    }
-    
-    public function __toString(): ?string
-    {
-        return $this->titre;
     }
 }

@@ -18,15 +18,4 @@ class PhotoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Photo::class);
     }
-
-    public function findByAlbum($code_album): ?Photo
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.album_photos = :code_album')
-            ->orderBy('p.date_publication', 'DESC')
-            ->setParameter('code_album', $code_album)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
 }
