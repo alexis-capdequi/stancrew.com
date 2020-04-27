@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
@@ -19,22 +20,17 @@ class Video
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $code;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lien;
+    private $link;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_publication;
+    private $publication_date;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -44,57 +40,56 @@ class Video
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $categorie_videos;
+    private $type;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\File(
+     *      maxSize="1024k",
+     *      maxSizeMessage="Le fichier est trop volumineux. Sa taille ne doit pas dépasser 1Mo.",
+     *      mimeTypes={"image/jpg", "image/jpeg", "image/png"},
+     *      mimeTypesMessage="Le type du fichier est invalide. Les types autorisés sont 'jpg', 'jpeg' ou 'png'."
+     * )
+     */
+    private $file;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titre;
+        return $this->title;
     }
 
-    public function setTitre(string $titre): self
+    public function setTitle(string $title): self
     {
-        $this->titre = $titre;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getCode(): ?string
+    public function getLink(): ?string
     {
-        return $this->code;
+        return $this->link;
     }
 
-    public function setCode(string $code): self
+    public function setLink(string $link): self
     {
-        $this->code = $code;
+        $this->link = $link;
 
         return $this;
     }
 
-    public function getLien(): ?string
+    public function getPublicationDate(): ?\DateTimeInterface
     {
-        return $this->lien;
+        return $this->publication_date;
     }
 
-    public function setLien(string $lien): self
+    public function setPublicationDate(\DateTimeInterface $publication_date): self
     {
-        $this->lien = $lien;
-
-        return $this;
-    }
-
-    public function getDatePublication(): ?\DateTimeInterface
-    {
-        return $this->date_publication;
-    }
-
-    public function setDatePublication(\DateTimeInterface $date_publication): self
-    {
-        $this->date_publication = $date_publication;
+        $this->publication_date = $publication_date;
 
         return $this;
     }
@@ -111,31 +106,26 @@ class Video
         return $this;
     }
 
-    public function getCategorie(): ?CategorieVideos
+    public function getType(): ?string
     {
-        return $this->categorie;
+        return $this->type;
     }
 
-    public function setCategorie(?CategorieVideos $categorie): self
+    public function setType(?string $type): self
     {
-        $this->categorie = $categorie;
+        $this->type = $type;
 
         return $this;
     }
-    
-    public function __toString(): ?string
+
+    public function getFile()
     {
-        return $this->titre;
-    }
-    
-    public function getCategorieVideos(): ?string
-    {
-        return $this->categorie_videos;
+        return $this->file;
     }
 
-    public function setCategorieVideos(?string $categorie_videos): self
+    public function setFile($file): self
     {
-        $this->categorie_videos = $categorie_videos;
+        $this->file = $file;
 
         return $this;
     }

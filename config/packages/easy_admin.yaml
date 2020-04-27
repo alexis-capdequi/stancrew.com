@@ -1,8 +1,0 @@
-easy_admin:
-    entities:
-        - App\Entity\AlbumPhotos
-        - App\Entity\Photo
-        - App\Entity\CategorieVideos
-        - App\Entity\Video
-        - App\Entity\Musique
-        - App\Entity\Concert

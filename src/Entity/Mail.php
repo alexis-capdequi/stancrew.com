@@ -19,17 +19,17 @@ class Mail
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $objet;
+    private $object;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $mail_expediteur;
+    private $sender;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $telephone_expediteur;
+    private $phone;
 
     /**
      * @ORM\Column(type="text")
@@ -39,45 +39,45 @@ class Mail
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_envoi;
+    private $sending_date;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getObjet(): ?string
+    public function getObject(): ?string
     {
-        return $this->objet;
+        return $this->object;
     }
 
-    public function setObjet(string $objet): self
+    public function setObject(string $object): self
     {
-        $this->objet = $objet;
+        $this->object = $object;
 
         return $this;
     }
 
-    public function getMailExpediteur(): ?string
+    public function getSender(): ?string
     {
-        return $this->mail_expediteur;
+        return $this->sender;
     }
 
-    public function setMailExpediteur(string $mail_expediteur): self
+    public function setSender(string $sender): self
     {
-        $this->mail_expediteur = $mail_expediteur;
+        $this->sender = $sender;
 
         return $this;
     }
 
-    public function getTelephoneExpediteur(): ?int
+    public function getPhone(): ?int
     {
-        return $this->telephone_expediteur;
+        return $this->phone;
     }
 
-    public function setTelephoneExpediteur(?int $telephone_expediteur): self
+    public function setPhone(?int $phone): self
     {
-        $this->telephone_expediteur = $telephone_expediteur;
+        $this->phone = $phone;
 
         return $this;
     }
@@ -94,14 +94,14 @@ class Mail
         return $this;
     }
 
-    public function getDateEnvoi(): ?\DateTimeInterface
+    public function getSendingDate(): ?\DateTimeInterface
     {
-        return $this->date_envoi;
+        return $this->sending_date;
     }
 
-    public function setDateEnvoi(\DateTimeInterface $date_envoi): self
+    public function setSendingDate(\DateTimeInterface $sending_date): self
     {
-        $this->date_envoi = $date_envoi;
+        $this->sending_date = $sending_date;
 
         return $this;
     }

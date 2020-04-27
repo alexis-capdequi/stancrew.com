@@ -19,7 +19,7 @@ class Concert
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    private $title;
 
     /**
      * @ORM\Column(type="datetime")
@@ -29,41 +29,41 @@ class Concert
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ville;
+    private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
-    private $code_postal;
+    private $postcodes;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $lien_reservation;
+    private $reservation_link;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $commentaire;
+    private $comment;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titre;
+        return $this->title;
     }
 
-    public function setTitre(string $titre): self
+    public function setTitle(string $title): self
     {
-        $this->titre = $titre;
+        $this->title = $title;
 
         return $this;
     }
@@ -80,62 +80,62 @@ class Concert
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getAdress(): ?string
     {
-        return $this->adresse;
+        return $this->adress;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdress(string $adress): self
     {
-        $this->adresse = $adresse;
+        $this->adress = $adress;
 
         return $this;
     }
 
-    public function getVille(): ?string
+    public function getCity(): ?string
     {
-        return $this->ville;
+        return $this->city;
     }
 
-    public function setVille(string $ville): self
+    public function setCity(string $city): self
     {
-        $this->ville = $ville;
+        $this->city = $city;
 
         return $this;
     }
 
-    public function getCodePostal(): ?int
+    public function getPostcodes(): ?string
     {
-        return $this->code_postal;
+        return $this->postcodes;
     }
 
-    public function setCodePostal(int $code_postal): self
+    public function setPostcodes(string $postcodes): self
     {
-        $this->code_postal = $code_postal;
+        $this->postcodes = $postcodes;
 
         return $this;
     }
 
-    public function getLienReservation(): ?string
+    public function getReservationLink(): ?string
     {
-        return $this->lien_reservation;
+        return $this->reservation_link;
     }
 
-    public function setLienReservation(?string $lien_reservation): self
+    public function setReservationLink(?string $reservation_link): self
     {
-        $this->lien_reservation = $lien_reservation;
+        $this->reservation_link = $reservation_link;
 
         return $this;
     }
 
-    public function getCommentaire(): ?string
+    public function getComment(): ?string
     {
-        return $this->commentaire;
+        return $this->comment;
     }
 
-    public function setCommentaire(?string $commentaire): self
+    public function setComment(?string $comment): self
     {
-        $this->commentaire = $commentaire;
+        $this->comment = $comment;
 
         return $this;
     }
