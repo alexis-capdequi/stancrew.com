@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
-use App\Entity\Mail;
+use App\Entity\Picture;
+use App\EventSubscriber\AddFileFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MailType extends AbstractType
+class PictureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('objet')
-            ->add('mail_expediteur')
-            ->add('telephone_expediteur')
-            ->add('message')
+            ->add('comment')
         ;
+        
+        $builder->addEventSubscriber(new AddFileFieldSubscriber());
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Mail::class,
+            'data_class' => Picture::class,
         ]);
     }
 }

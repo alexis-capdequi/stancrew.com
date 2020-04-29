@@ -38,7 +38,7 @@ class Video
     private $description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type;
     

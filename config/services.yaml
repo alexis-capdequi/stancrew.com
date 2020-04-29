@@ -19,12 +19,12 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
         
-    #App\Service\FileUploader:
-    #    arguments:
-    #        $pictures_images_directory: '%pictures_images_directory%'
-    #        $videos_images_directory: '%videos_images_directory%'
-    #        $music_directory: '%music_directory%'
-    #       
-    #App\EventSubscriber\EntitySubscriber:
-    #    tags:
-    #        - { name: 'doctrine.event_subscriber' }
+    App\Service\FileUploader:
+        arguments:
+            $pictures_images_directory: '%pictures_images_directory%'
+            $videos_images_directory: '%videos_images_directory%'
+            $music_directory: '%music_directory%'
+           
+    App\EventSubscriber\EntitySubscriber:
+        tags:
+            - { name: 'doctrine.event_subscriber' }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\App;
 
 use App\Repository\PictureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PicturesController extends AbstractController
+class PictureController extends AbstractController
 {
     /**
      * @Route("/photos", name="pictures_index")

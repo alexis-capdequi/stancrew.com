@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Mail{% endblock %}
+
+{% block body %}
+    <h1>Mail</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mail.id }}</td>
+            </tr>
+            <tr>
+                <th>Object</th>
+                <td>{{ mail.object }}</td>
+            </tr>
+            <tr>
+                <th>Sender</th>
+                <td>{{ mail.sender }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ mail.phone }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ mail.message }}</td>
+            </tr>
+            <tr>
+                <th>Sending_date</th>
+                <td>{{ mail.sendingDate ? mail.sendingDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_mail_index') }}">back to list</a>
+
+    <a href="{{ path('admin_mail_edit', {'id': mail.id}) }}">edit</a>
+
+    {{ include('admin/mail/_delete_form.html.twig') }}
+{% endblock %}

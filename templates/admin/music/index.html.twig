@@ -1,0 +1,40 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Music index{% endblock %}
+
+{% block body %}
+    <h1>Music index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>File</th>
+                <th>Publication_date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for music in musics %}
+            <tr>
+                <td>{{ music.id }}</td>
+                <td>{{ music.title }}</td>
+                <td>{{ music.file }}</td>
+                <td>{{ music.publicationDate ? music.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_music_show', {'id': music.id}) }}">show</a>
+                    <a href="{{ path('admin_music_edit', {'id': music.id}) }}">edit</a>
+                    {{ include('admin/music/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_music_new') }}">Create new</a>
+{% endblock %}
